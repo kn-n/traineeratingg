@@ -18,9 +18,9 @@ class LoginActivity : AppCompatActivity() {
         val loginEt = findViewById<EditText>(R.id.login)
         val passwordEt = findViewById<EditText>(R.id.password)
         initFirebase()
-        val team = Team("Rocket GO", "Приложение для оценки практикантов", "")
-        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name).setValue(team)
-        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name)
+//        val team = Team("Rocket GO", "Приложение для оценки практикантов", "")
+//        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name).child(NODE_USERS).child("33")
+//                .child("Очная встреча").setValue("2 1 0 -1")
 
         signInButton.setOnClickListener {
             val login = loginEt.text.toString()
