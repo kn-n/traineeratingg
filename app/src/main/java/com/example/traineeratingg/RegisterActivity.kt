@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
                 specializationEt.text.toString().isEmpty() || skillsEt.text.toString().isEmpty()){
                 makeToast(this,"Заполните все поля")
             } else{
-                val user = User(loginEt.text.toString(),passwordEt.text.toString(),"","","","",
+                val user = User(loginEt.text.toString(),passwordEt.text.toString(),"Практикант","","","",
                     nameEt.text.toString(),jobEt.text.toString(),
                     specializationEt.text.toString(),skillsEt.text.toString())
                 REF_DATABASE_ROOT.child(NODE_USERS).child(user.login).setValue(user)

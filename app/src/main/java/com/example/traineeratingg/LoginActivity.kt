@@ -18,17 +18,16 @@ class LoginActivity : AppCompatActivity() {
         val signUpButton = findViewById<TextView>(R.id.sign_up)
         val signInButton = findViewById<Button>(R.id.sign_in)
         val loginEt = findViewById<EditText>(R.id.login)
-        val login = loginEt.text.toString()
         val passwordEt = findViewById<EditText>(R.id.password)
-        val password = passwordEt.text.toString()
         initFirebase()
         signInButton.setOnClickListener {
-            if (loginEt.text.toString().isEmpty() || passwordEt.text.toString().isEmpty()){
-                makeToast(this,"Fill all the fields")
-            }else{
-                val ref = REF_DATABASE_ROOT.child(NODE_USERS)
-                ref.addListenerForSingleValueEvent(
-                        AppValueEventListener{
+            val login = loginEt.text.toString()
+            val password = passwordEt.text.toString()
+            if (loginEt.text.toString().isEmpty() || passwordEt.text.toString().isEmpty()) {
+                makeToast(this, "Fill all the fields")
+            } else {
+                REF_DATABASE_ROOT.child(NODE_USERS).addListenerForSingleValueEvent(
+                        AppValueEventListener {
                             if (it.hasChild(login)) {
                                 val user = it.child(login).getValue(User::class.java)
                                 if (user!!.password == password) {
