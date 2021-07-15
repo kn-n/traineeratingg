@@ -9,6 +9,7 @@ lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var CURRENT_USER: String
 
 const val NODE_USERS = "Users"
+const val NODE_TEAMS = "Teams"
 
 fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()

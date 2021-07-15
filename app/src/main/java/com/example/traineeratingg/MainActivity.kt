@@ -31,14 +31,7 @@ class MainActivity : AppCompatActivity() {
         navAcc.isSelected = false
 
         back.visibility=View.GONE
-
-        initFirebase()
-        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
-                AppValueEventListener{
-                    val user = it.getValue(User::class.java)
-                    nameOfFragment.text = user!!.team
-                }
-        )
+        nameOfFragment.text = "Команда"
 
         val fragmentManager = supportFragmentManager.beginTransaction()
         fragmentManager.add(R.id.frame, teamFragment)
@@ -67,13 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         navTeams.setOnClickListener {
-            initFirebase()
-            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
-                    AppValueEventListener{
-                        val user = it.getValue(User::class.java)
-                        nameOfFragment.text = user!!.team
-                    }
-            )
+            nameOfFragment.text = "Команда"
             commitFragment(navTeams)
         }
 

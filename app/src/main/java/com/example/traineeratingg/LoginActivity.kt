@@ -6,10 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.traineeratingg.Data.Firebase.CURRENT_USER
-import com.example.traineeratingg.Data.Firebase.NODE_USERS
-import com.example.traineeratingg.Data.Firebase.REF_DATABASE_ROOT
-import com.example.traineeratingg.Data.Firebase.initFirebase
+import com.example.traineeratingg.Data.Firebase.*
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +18,10 @@ class LoginActivity : AppCompatActivity() {
         val loginEt = findViewById<EditText>(R.id.login)
         val passwordEt = findViewById<EditText>(R.id.password)
         initFirebase()
+        val team = Team("Rocket GO", "Приложение для оценки практикантов", "")
+        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name).setValue(team)
+        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name)
+
         signInButton.setOnClickListener {
             val login = loginEt.text.toString()
             val password = passwordEt.text.toString()
