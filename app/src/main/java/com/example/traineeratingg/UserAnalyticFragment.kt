@@ -71,6 +71,9 @@ class UserAnalyticFragment: Fragment() {
                                         val marks = it.getValue(String::class.java)
                                         if (marks.isNullOrEmpty()){
                                             holder.evaluate!!.visibility = View.VISIBLE
+                                            holder.evaluate.setOnClickListener {
+                                                replaceFragment(EvaluateFragment(tasks[position]))
+                                            }
                                         } else{
                                             holder.evaluate!!.visibility = View.GONE
                                             val listMarks = split(marks)

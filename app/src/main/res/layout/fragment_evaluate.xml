@@ -162,11 +162,13 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <RadioGroup
+                    android:id="@+id/group_param1"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -174,20 +176,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param1mark1"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -195,20 +191,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param1mark2"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -216,19 +206,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param1mark3"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="end"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -251,6 +236,7 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
             <TextView
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:fontFamily="@font/work_sans_bold"
@@ -264,11 +250,13 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <RadioGroup
+                    android:id="@+id/group_param2"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -276,20 +264,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param2mark1"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -297,20 +279,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param2mark2"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -318,19 +294,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param2mark3"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="end"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -366,11 +337,13 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <RadioGroup
+                    android:id="@+id/group_param3"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -378,20 +351,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param3mark1"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -399,20 +366,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param3mark2"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -420,19 +381,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param3mark3"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="end"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -468,11 +424,13 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp">
                 <RadioGroup
+                    android:id="@+id/group_param4"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -480,20 +438,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param4mark1"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginEnd="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -501,20 +453,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param4mark2"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
@@ -522,19 +468,14 @@
                         android:textColor="@color/blue"
                         android:textSize="18sp"/>
                     <RadioButton
+                        android:layout_weight="10"
                         android:theme="@style/MyCheckBox"
                         android:id="@+id/param4mark3"
                         android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:checked="false"/>
-                </RadioGroup>
-                <RadioGroup
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="25dp"
-                    android:gravity="end"
-                    android:orientation="horizontal">
                     <TextView
+                        android:layout_weight="1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:fontFamily="@font/work_sans"
