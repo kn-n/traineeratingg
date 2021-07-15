@@ -41,5 +41,6 @@ class MainActivity : AppCompatActivity() {
 
             fragmentManager.add(R.id.frame, accountFragment)
         }
+        fragmentManager.commit()
     }
 }
