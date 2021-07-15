@@ -3,6 +3,7 @@ package com.example.traineeratingg
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 
@@ -23,31 +24,60 @@ class MainActivity : AppCompatActivity() {
         navAcc.isSelected = false
 
         val fragmentManager = supportFragmentManager.beginTransaction()
-
         fragmentManager.add(R.id.frame, teamFragment)
+        fragmentManager.commit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val navAnalytics = findViewById<ImageButton>(R.id.analytics)
+        navAnalytics.isSelected = false
+        val navTeams = findViewById<ImageButton>(R.id.teams)
+        navTeams.isSelected  = true
+        val navAcc = findViewById<ImageButton>(R.id.acc)
+        navAcc.isSelected = false
 
         navAnalytics.setOnClickListener {
-            navAnalytics.isSelected = true
-            navTeams.isSelected  = false
-            navAcc.isSelected = false
-
-            fragmentManager.replace(R.id.frame, userAnalyticFragment)
+            commitFragment(navAnalytics)
         }
 
         navAcc.setOnClickListener {
+            commitFragment(navAcc)
+        }
+
+        navTeams.setOnClickListener {
+            commitFragment(navTeams)
+        }
+
+    }
+
+    fun commitFragment(view: View){
+        val navAnalytics = findViewById<ImageButton>(R.id.analytics)
+        val navTeams = findViewById<ImageButton>(R.id.teams)
+        val navAcc = findViewById<ImageButton>(R.id.acc)
+        val fragmentManager = supportFragmentManager.beginTransaction()
+        if (view == navAcc){
             navAnalytics.isSelected = false
             navTeams.isSelected  = false
             navAcc.isSelected = true
 
             fragmentManager.replace(R.id.frame, accountFragment)
-        }
-
-        navTeams.setOnClickListener {
+            fragmentManager.commit()
+        }else if (view == navTeams){
             navAnalytics.isSelected = false
             navTeams.isSelected  = true
             navAcc.isSelected = false
+
             fragmentManager.replace(R.id.frame, teamFragment)
+            fragmentManager.commit()
+        }else if(view == navAnalytics){
+            navAnalytics.isSelected = true
+            navTeams.isSelected  = false
+            navAcc.isSelected = false
+
+            fragmentManager.replace(R.id.frame, userAnalyticFragment)
+            fragmentManager.commit()
         }
-        fragmentManager.commit()
     }
 }
