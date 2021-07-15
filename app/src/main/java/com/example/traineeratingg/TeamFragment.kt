@@ -61,6 +61,8 @@ class TeamFragment: Fragment() {
 
             override fun getItemCount() = members.size
         }
+
+        membersRecyclerView.adapter = adapter
     }
 
     class MembersHolder (view: View): RecyclerView.ViewHolder(view){
