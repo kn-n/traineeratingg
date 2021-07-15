@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             navTeams.isSelected  = false
             navAcc.isSelected = false
 
-            fragmentManager.add(R.id.frame, userAnalyticFragment)
+            fragmentManager.replace(R.id.frame, userAnalyticFragment)
         }
 
         navAcc.setOnClickListener {
@@ -39,7 +39,14 @@ class MainActivity : AppCompatActivity() {
             navTeams.isSelected  = false
             navAcc.isSelected = true
 
-            fragmentManager.add(R.id.frame, accountFragment)
+            fragmentManager.replace(R.id.frame, accountFragment)
+        }
+
+        navTeams.setOnClickListener {
+            navAnalytics.isSelected = false
+            navTeams.isSelected  = true
+            navAcc.isSelected = false
+            fragmentManager.replace(R.id.frame, teamFragment)
         }
         fragmentManager.commit()
     }
