@@ -7,12 +7,14 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.example.traineeratingg.Data.Firebase.NODE_USERS
 import com.example.traineeratingg.Data.Firebase.REF_DATABASE_ROOT
+import com.example.traineeratingg.Data.Firebase.initFirebase
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.sign_up)
 
+        initFirebase()
         val loginEt = findViewById<EditText>(R.id.login)
         val passwordEt = findViewById<EditText>(R.id.password)
         val nameEt = findViewById<EditText>(R.id.name)
@@ -30,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
                 val user = User(loginEt.text.toString(),passwordEt.text.toString(),"","","","",
                     nameEt.text.toString(),jobEt.text.toString(),
                     specializationEt.text.toString(),skillsEt.text.toString())
-                REF_DATABASE_ROOT.child(NODE_USERS).setValue(user)
+                REF_DATABASE_ROOT.child(NODE_USERS).child(user.login).setValue(user)
                 startActivity(Intent(this,LoginActivity::class.java))
             }
         }
