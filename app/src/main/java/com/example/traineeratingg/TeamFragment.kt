@@ -28,14 +28,26 @@ class TeamFragment: Fragment() {
     override fun onResume() {
         super.onResume()
 
+        val date = view?.findViewById<TextView>(R.id.date)
+        val teamName = view?.findViewById<TextView>(R.id.team_name)
+        val topic = view?.findViewById<TextView>(R.id.topic)
+
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
                 AppValueEventListener{
                     val user = it.getValue(User::class.java)
                     if (user!!.team.isNotEmpty()){
+                        REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).addValueEventListener(
+                                AppValueEventListener{
+                                    val team = it.getValue(Team::class.java)
+                                    date!!.text = team!!.date
+                                    teamName!!.text = team.name
+                                    topic!!.text = team.theme
+                                }
+                        )
                         REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child(NODE_USERS).addValueEventListener(
                                 AppValueEventListener{
-                                    val listUsers = it.children.map { it.getValue(User::class.java)!! }
-                                    initRecyclerView(listUsers)
+                                    val listUsers = it.children.map { it.key }
+                                    initRecyclerView(listUsers as List<String>)
                                 }
                         )
                     }
@@ -43,7 +55,7 @@ class TeamFragment: Fragment() {
         )
     }
 
-    private fun initRecyclerView(members: List<User>){
+    private fun initRecyclerView(members: List<String>){
         membersRecyclerView = view?.findViewById(R.id.members)!!
         membersRecyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -55,8 +67,13 @@ class TeamFragment: Fragment() {
             }
 
             override fun onBindViewHolder(holder: MembersHolder, position: Int) {
-                holder.userName.text = members[position].name
-                holder.job.text = members[position].placeOfStudy
+                REF_DATABASE_ROOT.child(NODE_USERS).child(members[position]).addValueEventListener(
+                        AppValueEventListener{
+                            val user = it.getValue(User::class.java)
+                            holder.userName.text = user!!.name
+                            holder.job.text = user.placeOfStudy
+                        }
+                )
             }
 
             override fun getItemCount() = members.size
@@ -68,7 +85,6 @@ class TeamFragment: Fragment() {
     class MembersHolder (view: View): RecyclerView.ViewHolder(view){
         var userName: TextView = itemView.findViewById(R.id.name)
         var job: TextView = itemView.findViewById(R.id.job)
-        var img: ImageView = itemView.findViewById(R.id.img)
     }
 }
 

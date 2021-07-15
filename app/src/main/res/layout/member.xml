@@ -25,7 +25,7 @@
         android:id="@+id/job"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
+        android:layout_marginVertical="3dp"
         android:layout_marginHorizontal="10dp"
         android:fontFamily="@font/work_sans"
         android:text="Место учебы/работы"
