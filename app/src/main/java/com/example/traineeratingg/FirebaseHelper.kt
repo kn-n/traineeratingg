@@ -6,6 +6,7 @@ import com.google.firebase.database.FirebaseDatabase
 
 lateinit var AUTH: FirebaseAuth
 lateinit var REF_DATABASE_ROOT: DatabaseReference
+lateinit var CURRENT_USER: String
 
 const val NODE_USERS = "Users"
 

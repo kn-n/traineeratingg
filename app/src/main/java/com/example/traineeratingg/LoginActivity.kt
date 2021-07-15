@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.traineeratingg.Data.Firebase.CURRENT_USER
 import com.example.traineeratingg.Data.Firebase.NODE_USERS
 import com.example.traineeratingg.Data.Firebase.REF_DATABASE_ROOT
 import com.example.traineeratingg.Data.Firebase.initFirebase
@@ -31,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
                             if (it.hasChild(login)) {
                                 val user = it.child(login).getValue(User::class.java)
                                 if (user!!.password == password) {
+                                    CURRENT_USER = user.login
                                     startActivity(Intent(this, MainActivity::class.java))
                                 } else {
                                     makeToast(this, "Wrong Password")
