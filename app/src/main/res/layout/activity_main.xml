@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
+            android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
@@ -23,6 +24,7 @@
             android:src="@drawable/ic_arrow_back"/>
 
         <TextView
+            android:id="@+id/name_of_activity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/work_sans_bold"
@@ -34,7 +36,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
