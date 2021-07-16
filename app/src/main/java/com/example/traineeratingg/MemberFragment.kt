@@ -14,7 +14,7 @@ import com.example.traineeratingg.Data.Firebase.NODE_TEAMS
 import com.example.traineeratingg.Data.Firebase.NODE_USERS
 import com.example.traineeratingg.Data.Firebase.REF_DATABASE_ROOT
 
-class UserAnalyticFragment: Fragment() {
+class MemberFragment(val userLogin: String): Fragment() {
 
     lateinit var gradesRecyclerView: RecyclerView
     private lateinit var adapter: RecyclerView.Adapter<MembersHolder>
@@ -32,7 +32,7 @@ class UserAnalyticFragment: Fragment() {
 
         val topic = view?.findViewById<TextView>(R.id.topic)
 
-        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
+        REF_DATABASE_ROOT.child(NODE_USERS).child(userLogin).addValueEventListener(
                 AppValueEventListener{
                     val user = it.getValue(User::class.java)
                     REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).addValueEventListener(
@@ -41,7 +41,7 @@ class UserAnalyticFragment: Fragment() {
                                 topic!!.text = team!!.theme
                             }
                     )
-                    REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
+                    REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child(NODE_USERS).child(userLogin).addValueEventListener(
                             AppValueEventListener{
                                 val tasks = it.children.map { it.key }
                                 initRecyclerView(tasks as List<String>)
@@ -63,17 +63,17 @@ class UserAnalyticFragment: Fragment() {
             }
 
             override fun onBindViewHolder(holder: MembersHolder, position: Int) {
-                REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
+                REF_DATABASE_ROOT.child(NODE_USERS).child(userLogin).addValueEventListener(
                         AppValueEventListener{
                             val user = it.getValue(User::class.java)
-                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(CURRENT_USER).child(tasks[position]).addValueEventListener(
+                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(userLogin).child(tasks[position]).addValueEventListener(
                                     AppValueEventListener{
                                         val marks = it.getValue(String::class.java)
                                         if (marks.isNullOrEmpty()){
                                             holder.evaluate!!.visibility = View.VISIBLE
                                             holder.eventName.text = tasks[position]
                                             holder.evaluate.setOnClickListener {
-                                                replaceFragment(EvaluateFragment(tasks[position], CURRENT_USER))
+                                                replaceFragment(EvaluateFragment(tasks[position], userLogin))
                                             }
                                         } else{
                                             holder.evaluate!!.visibility = View.GONE

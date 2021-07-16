@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-class EvaluateFragment(val taskName: String): Fragment() {
+class EvaluateFragment(val taskName: String, val userLogin: String): Fragment() {
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -20,5 +20,8 @@ class EvaluateFragment(val taskName: String): Fragment() {
         super.onResume()
         val task = view?.findViewById<TextView>(R.id.task)
         task!!.text = taskName
+
+
+
     }
 }

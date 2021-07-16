@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -72,6 +73,9 @@ class TeamFragment: Fragment() {
                             val user = it.getValue(User::class.java)
                             holder.userName.text = user!!.name
                             holder.job.text = user.placeOfStudy
+                            holder.memberCard.setOnClickListener {
+                                replaceFragment(MemberFragment(user.login))
+                            }
                         }
                 )
             }
@@ -85,6 +89,7 @@ class TeamFragment: Fragment() {
     class MembersHolder (view: View): RecyclerView.ViewHolder(view){
         var userName: TextView = itemView.findViewById(R.id.name)
         var job: TextView = itemView.findViewById(R.id.job)
+        var memberCard: ConstraintLayout = itemView.findViewById(R.id.member_card)
     }
 }
 
