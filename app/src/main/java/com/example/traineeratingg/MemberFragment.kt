@@ -31,6 +31,7 @@ class MemberFragment(val userLogin: String): Fragment() {
         super.onResume()
 
         val topic = view?.findViewById<TextView>(R.id.topic)
+        gradesRecyclerView = view?.findViewById(R.id.grades)!!
 
         REF_DATABASE_ROOT.child(NODE_USERS).child(userLogin).addValueEventListener(
                 AppValueEventListener{
@@ -52,7 +53,6 @@ class MemberFragment(val userLogin: String): Fragment() {
     }
 
     private fun initRecyclerView(tasks: List<String>){
-        gradesRecyclerView = view?.findViewById(R.id.grades)!!
         gradesRecyclerView.layoutManager = LinearLayoutManager(context)
 
         adapter = object : RecyclerView.Adapter<MembersHolder>() {

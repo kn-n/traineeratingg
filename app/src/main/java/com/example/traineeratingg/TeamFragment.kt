@@ -32,6 +32,7 @@ class TeamFragment: Fragment() {
         val date = view?.findViewById<TextView>(R.id.date)
         val teamName = view?.findViewById<TextView>(R.id.team_name)
         val topic = view?.findViewById<TextView>(R.id.topic)
+        membersRecyclerView = view?.findViewById(R.id.members)!!
 
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
                 AppValueEventListener{
@@ -57,7 +58,6 @@ class TeamFragment: Fragment() {
     }
 
     private fun initRecyclerView(members: List<String>){
-        membersRecyclerView = view?.findViewById(R.id.members)!!
         membersRecyclerView.layoutManager = LinearLayoutManager(context)
 
         adapter = object : RecyclerView.Adapter<MembersHolder>() {
