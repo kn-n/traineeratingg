@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -30,6 +31,7 @@ class AccountFragment: Fragment() {
         val specialization = view?.findViewById<TextView>(R.id.specialization)
         val skills = view?.findViewById<TextView>(R.id.skills)
         val img = view?.findViewById<ImageView>(R.id.img)
+        val edit = view?.findViewById<Button>(R.id.edit_acc)
 
         initFirebase()
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
@@ -43,5 +45,6 @@ class AccountFragment: Fragment() {
                     skills!!.text = user!!.skills
                 }
         )
+        edit!!.setOnClickListener { replaceFragment(EditAccountFragment()) }
     }
 }

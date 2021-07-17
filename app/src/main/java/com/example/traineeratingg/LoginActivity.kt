@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         val passwordEt = findViewById<EditText>(R.id.password)
         initFirebase()
 //        val team = Team("Rocket GO", "Приложение для оценки практикантов", "")
-//        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name).child(NODE_USERS).child("33")
+//        REF_DATABASE_ROOT.child(NODE_TEAMS).child(team.name).child(NODE_USERS).child("11")
 //                .child("Очная встреча").setValue("2 1 0 -1")
 
         signInButton.setOnClickListener {
@@ -34,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
                                 val user = it.child(login).getValue(User::class.java)
                                 if (user!!.password == password) {
                                     CURRENT_USER = user.login
+                                    CURRENT_USER_ROLE = user.role
                                     startActivity(Intent(this, MainActivity::class.java))
                                 } else {
                                     makeToast(this, "Wrong Password")

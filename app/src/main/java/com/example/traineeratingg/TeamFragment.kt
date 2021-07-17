@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +33,10 @@ class TeamFragment: Fragment() {
         val date = view?.findViewById<TextView>(R.id.date)
         val teamName = view?.findViewById<TextView>(R.id.team_name)
         val topic = view?.findViewById<TextView>(R.id.topic)
+        val edit = view?.findViewById<Button>(R.id.edit_team)
         membersRecyclerView = view?.findViewById(R.id.members)!!
+
+        edit!!.setOnClickListener { replaceFragment(EditTeamFragment("save")) }
 
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
                 AppValueEventListener{

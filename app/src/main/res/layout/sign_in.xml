@@ -7,115 +7,132 @@
     android:layout_height="match_parent"
     android:background="@color/light_grey">
 
-    <TextView
-        android:id="@+id/textView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:fontFamily="@font/work_sans_bold"
-        android:gravity="center"
-        android:text="Trainee Rating"
-        android:textColor="@color/blue"
-        android:textSize="70sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <EditText
-            android:id="@+id/login"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/deep_blue_stroke"
-            android:fontFamily="@font/work_sans"
-            android:hint="Логин"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:textColor="@color/blue"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
-        android:layout_marginVertical="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/deep_blue_stroke"
-            android:fontFamily="@font/work_sans"
-            android:hint="Пароль"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:textColor="@color/blue"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginVertical="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <Button
-            android:id="@+id/sign_in"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/btn_bg"
-            android:fontFamily="@font/work_sans_bold"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:text="Войти"
-            android:textAllCaps="false"
-            android:textColor="@color/deep_blue"
-            android:textSize="28sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/work_sans_light"
-            android:gravity="center"
-            android:text="У вас нет аккаунта?"
-            android:textColor="@color/light_blue"
-            android:textSize="20sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/sign_up"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/work_sans_bold"
-            android:gravity="center"
-            android:text="Зарегистрируйтесь"
-            android:textColor="@color/light_blue"
-            android:textSize="20sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:fontFamily="@font/work_sans_bold"
+                android:gravity="center"
+                android:text="Trainee Rating"
+                android:textColor="@color/blue"
+                android:textSize="70sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <EditText
+                    android:id="@+id/login"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/deep_blue_stroke"
+                    android:fontFamily="@font/work_sans"
+                    android:hint="Логин"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginVertical="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/deep_blue_stroke"
+                    android:fontFamily="@font/work_sans"
+                    android:hint="Пароль"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="70dp"
+                android:layout_marginVertical="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <Button
+                    android:id="@+id/sign_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="@font/work_sans_bold"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:text="Войти"
+                    android:textAllCaps="false"
+                    android:textColor="@color/deep_blue"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="30dp"
+                android:gravity="bottom"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/work_sans_light"
+                    android:gravity="center"
+                    android:text="У вас нет аккаунта?"
+                    android:textColor="@color/light_blue"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/sign_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/work_sans_bold"
+                    android:gravity="center"
+                    android:text="Зарегистрируйтесь"
+                    android:textColor="@color/light_blue"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
