@@ -36,6 +36,7 @@ class EditTeamFragment(val saveOrCreate: String): Fragment() {
         val tasksBlock = view?.findViewById<LinearLayout>(R.id.layout2)
 
         if (saveOrCreate == "save"){
+            save!!.text = "Сохранить"
             if (CURRENT_USER_ROLE=="Практикант"){
                 membersBlock!!.visibility = View.GONE
                 tasksBlock!!.visibility = View.GONE
@@ -47,10 +48,9 @@ class EditTeamFragment(val saveOrCreate: String): Fragment() {
                                         val team = it.getValue(Team::class.java)
                                         name!!.setText(team!!.name)
                                         topic!!.setText(team.theme)
-                                        save!!.setOnClickListener {
-                                            team.name = name.text.toString()
-                                            team.theme = topic.text.toString()
-                                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).setValue(team)
+                                        save.setOnClickListener {
+                                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child("name").setValue(name.text.toString())
+                                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child("theme").setValue(topic.text.toString())
                                             replaceFragment(TeamFragment())
                                         }
                                     }
