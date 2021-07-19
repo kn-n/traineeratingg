@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -63,27 +65,27 @@ class MemberFragment(val userLogin: String): Fragment() {
             }
 
             override fun onBindViewHolder(holder: MembersHolder, position: Int) {
+                holder.grades.visibility = View.GONE
                 REF_DATABASE_ROOT.child(NODE_USERS).child(userLogin).addValueEventListener(
                         AppValueEventListener{
                             val user = it.getValue(User::class.java)
                             REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(userLogin).child(tasks[position]).addValueEventListener(
                                     AppValueEventListener{
-                                        val marks = it.getValue(String::class.java)
-                                        if (marks.isNullOrEmpty()){
-                                            holder.evaluate!!.visibility = View.VISIBLE
-                                            holder.eventName.text = tasks[position]
-                                            holder.evaluate.setOnClickListener {
-                                                replaceFragment(EvaluateFragment(tasks[position], userLogin))
-                                            }
-                                        } else{
-                                            holder.evaluate!!.visibility = View.GONE
-                                            val listMarks = split(marks)
-                                            holder.eventName.text = tasks[position]
-                                            holder.param1.text = listMarks[0]
-                                            holder.param2.text = listMarks[1]
-                                            holder.param3.text = listMarks[2]
-                                            holder.param4.text = listMarks[3]
-                                        }
+                                        REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child(NODE_USERS).child(userLogin).child(tasks[position]).child(CURRENT_USER).addValueEventListener(
+                                                AppValueEventListener{
+                                                    val myMarks = it.getValue(String::class.java)
+                                                    if (myMarks.isNullOrEmpty()){
+                                                        holder.evaluate.visibility = View.VISIBLE
+                                                        holder.eventName.text = tasks[position]
+                                                        holder.evaluate.setOnClickListener {
+                                                            replaceFragment(EvaluateFragment(tasks[position], userLogin))
+                                                        }
+                                                    } else{
+                                                        holder.evaluate.visibility = View.GONE
+                                                        holder.eventName.text = tasks[position]
+                                                    }
+                                                }
+                                        )
                                     }
                             )
                         }
@@ -98,10 +100,7 @@ class MemberFragment(val userLogin: String): Fragment() {
 
     class MembersHolder (view: View): RecyclerView.ViewHolder(view){
         var eventName: TextView = itemView.findViewById(R.id.event)
-        var param1: TextView = itemView.findViewById(R.id.param1)
-        var param2: TextView = itemView.findViewById(R.id.param2)
-        var param3: TextView = itemView.findViewById(R.id.param3)
-        var param4: TextView = itemView.findViewById(R.id.param4)
+        var grades: FrameLayout = itemView.findViewById(R.id.grades)
         var evaluate: Button = itemView.findViewById(R.id.evaluate)
     }
 }

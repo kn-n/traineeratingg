@@ -31,6 +31,10 @@ class UserAnalyticFragment: Fragment() {
         super.onResume()
 
         val topic = view?.findViewById<TextView>(R.id.topic)
+        val param1 = view?.findViewById<TextView>(R.id.param1)
+        val param2 = view?.findViewById<TextView>(R.id.param2)
+        val param3 = view?.findViewById<TextView>(R.id.param3)
+        val param4 = view?.findViewById<TextView>(R.id.param4)
         gradesRecyclerView = view?.findViewById(R.id.grades)!!
 
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_USER).addValueEventListener(
@@ -68,22 +72,38 @@ class UserAnalyticFragment: Fragment() {
                             val user = it.getValue(User::class.java)
                             REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(CURRENT_USER).child(tasks[position]).addValueEventListener(
                                     AppValueEventListener{
-                                        val marks = it.getValue(String::class.java)
-                                        if (marks.isNullOrEmpty()){
-                                            holder.evaluate!!.visibility = View.VISIBLE
-                                            holder.eventName.text = tasks[position]
-                                            holder.evaluate.setOnClickListener {
-                                                replaceFragment(EvaluateFragment(tasks[position], CURRENT_USER))
+                                        val marks = it.children.map { it.getValue(String::class.java) }
+                                        if (marks.isNotEmpty()){
+                                            for (mark in marks){
+                                                val listMarks = split(mark!!)
+                                                holder.param1.text = ((holder.param1.text.toString().toInt() + listMarks[0].toInt())/marks.size).toString()
+                                                holder.param2.text = ((holder.param2.text.toString().toInt() + listMarks[1].toInt())/marks.size).toString()
+                                                holder.param3.text = ((holder.param3.text.toString().toInt() + listMarks[2].toInt())/marks.size).toString()
+                                                holder.param4.text = ((holder.param4.text.toString().toInt() + listMarks[3].toInt())/marks.size).toString()
                                             }
-                                        } else{
-                                            holder.evaluate!!.visibility = View.GONE
-                                            val listMarks = split(marks)
-                                            holder.eventName.text = tasks[position]
-                                            holder.param1.text = listMarks[0]
-                                            holder.param2.text = listMarks[1]
-                                            holder.param3.text = listMarks[2]
-                                            holder.param4.text = listMarks[3]
                                         }
+                                        REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(CURRENT_USER).child(tasks[position]).child(CURRENT_USER).addValueEventListener(
+                                                AppValueEventListener{
+                                                    val myMarks = it.getValue(String::class.java)
+                                                    if (myMarks.isNullOrEmpty()){
+                                                        holder.evaluate!!.visibility = View.VISIBLE
+                                                        holder.eventName.text = tasks[position]
+                                                        holder.evaluate.setOnClickListener {
+                                                            replaceFragment(EvaluateFragment(tasks[position], CURRENT_USER))
+                                                        }
+                                                    } else{
+                                                        holder.evaluate!!.visibility = View.GONE
+                                                        for (mark in marks){
+                                                            val listMarks = split(mark!!)
+                                                            holder.param1.text = ((holder.param1.text.toString().toInt() + listMarks[0].toInt())/marks.size).toString()
+                                                            holder.param2.text = ((holder.param2.text.toString().toInt() + listMarks[1].toInt())/marks.size).toString()
+                                                            holder.param3.text = ((holder.param3.text.toString().toInt() + listMarks[2].toInt())/marks.size).toString()
+                                                            holder.param4.text = ((holder.param4.text.toString().toInt() + listMarks[3].toInt())/marks.size).toString()
+                                                        }
+                                                        holder.eventName.text = tasks[position]
+                                                    }
+                                                }
+                                        )
                                     }
                             )
                         }

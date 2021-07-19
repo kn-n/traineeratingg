@@ -113,7 +113,7 @@ class EvaluateFragment(val taskName: String, val userLogin: String) : Fragment()
                 REF_DATABASE_ROOT.child(NODE_USERS).child(userLogin).addListenerForSingleValueEvent(
                         AppValueEventListener{
                             val user = it.getValue(User::class.java)
-                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(userLogin).child(taskName).setValue(M)
+                            REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(userLogin).child(taskName).child(CURRENT_USER).setValue(M)
                         }
                 )
                 if (userLogin== CURRENT_USER){
