@@ -98,14 +98,22 @@ class UserAnalyticFragment: Fragment() {
                             REF_DATABASE_ROOT.child(NODE_TEAMS).child(user!!.team).child(NODE_USERS).child(CURRENT_USER).child(tasks[position]).addValueEventListener(
                                     AppValueEventListener{
                                         val marks = it.children.map { it.getValue(String::class.java) }
+                                        var p1 = 0
+                                        var p2 = 0
+                                        var p3 = 0
+                                        var p4 = 0
                                         if (marks.isNotEmpty()){
                                             for (mark in marks){
                                                 val listMarks = split(mark!!)
-                                                holder.param1.text = ((holder.param1.text.toString().toInt() + listMarks[0].toInt())/marks.size).toString()
-                                                holder.param2.text = ((holder.param2.text.toString().toInt() + listMarks[1].toInt())/marks.size).toString()
-                                                holder.param3.text = ((holder.param3.text.toString().toInt() + listMarks[2].toInt())/marks.size).toString()
-                                                holder.param4.text = ((holder.param4.text.toString().toInt() + listMarks[3].toInt())/marks.size).toString()
+                                                p1 += listMarks[0].toInt()
+                                                p2 += listMarks[1].toInt()
+                                                p3 += listMarks[2].toInt()
+                                                p4 += listMarks[3].toInt()
                                             }
+                                            holder.param1.text = (p1/marks.size).toString()
+                                            holder.param2.text = (p2/marks.size).toString()
+                                            holder.param3.text = (p3/marks.size).toString()
+                                            holder.param4.text = (p4/marks.size).toString()
                                         }
                                         REF_DATABASE_ROOT.child(NODE_TEAMS).child(user.team).child(NODE_USERS).child(CURRENT_USER).child(tasks[position]).child(CURRENT_USER).addValueEventListener(
                                                 AppValueEventListener{
@@ -117,14 +125,22 @@ class UserAnalyticFragment: Fragment() {
                                                             replaceFragment(EvaluateFragment(tasks[position], CURRENT_USER))
                                                         }
                                                     } else{
-                                                        holder.evaluate!!.visibility = View.GONE
+                                                        holder.evaluate.visibility = View.GONE
+                                                        var pp1 = 0
+                                                        var pp2 = 0
+                                                        var pp3 = 0
+                                                        var pp4 = 0
                                                         for (mark in marks){
                                                             val listMarks = split(mark!!)
-                                                            holder.param1.text = ((holder.param1.text.toString().toInt() + listMarks[0].toInt())/marks.size).toString()
-                                                            holder.param2.text = ((holder.param2.text.toString().toInt() + listMarks[1].toInt())/marks.size).toString()
-                                                            holder.param3.text = ((holder.param3.text.toString().toInt() + listMarks[2].toInt())/marks.size).toString()
-                                                            holder.param4.text = ((holder.param4.text.toString().toInt() + listMarks[3].toInt())/marks.size).toString()
+                                                            pp1 += listMarks[0].toInt()
+                                                            pp2 += listMarks[1].toInt()
+                                                            pp3 += listMarks[2].toInt()
+                                                            pp4 += listMarks[3].toInt()
                                                         }
+                                                        holder.param1.text = (pp1/marks.size).toString()
+                                                        holder.param2.text = (pp2/marks.size).toString()
+                                                        holder.param3.text = (pp3/marks.size).toString()
+                                                        holder.param4.text = (pp4/marks.size).toString()
                                                         holder.eventName.text = tasks[position]
                                                     }
                                                 }
